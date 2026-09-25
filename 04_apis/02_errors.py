@@ -4,16 +4,16 @@
 import httpx
 import json
 
-USER = "schacon"
+USER = "schaconx"
 URL = "https://api.github.com/users/{user}/events/public"
 
 try:
-	response = httpx.get(URL.format(user=USER))
-	response.raise_for_status()
-	data = response.json()
+  response = httpx.get(URL.format(user=USER))
+  response.raise_for_status()
+  data = response.json()
 
-	for item in data:
-		print(item['repo']['name'], ' - ', item['type'])
+  for item in data:
+    print(item["repo"]["name"], " - ", item["type"])
 
-except httpx.HPPTError as e:
-	print(e)
+except httpx.HTTPError as e:
+  print(e)
